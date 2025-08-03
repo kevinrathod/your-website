@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Unlock the Love Code</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      margin: 0;
+      background: linear-gradient(to top left, #84fab0, #8fd3f4);
+      height: 100vh;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      color: white;
+      text-align: center;
+    }
+
+    .box {
+      background: rgba(255, 255, 255, 0.2);
+      padding: 30px;
+      border-radius: 15px;
+      backdrop-filter: blur(10px);
+      width: 90%;
+      max-width: 300px;
+    }
+
+    input {
+      font-size: 20px;
+      padding: 10px;
+      width: 100px;
+      border-radius: 10px;
+      border: none;
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      border: none;
+      background: white;
+      color: #ff4b2b;
+      font-weight: bold;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    #hint {
+      margin-top: 10px;
+      font-size: 16px;
+      color: #fff3;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h2>Unlock the Love Code 🔐</h2>
+    <p>Enter the <strong>4-digit secret code</strong> to continue!</p>
+    <input type="number" id="codeInput" placeholder="____" />
+    <br />
+    <button onclick="checkCode()">Try Code</button>
+    <p id="hint"></p>
+  </div>
+
+  <script>
+    const secretCode = 2327;
+    const hintElement = document.getElementById("hint");
+
+    function checkCode() {
+      const guess = parseInt(document.getElementById("codeInput").value);
+      if (guess === secretCode) {
+        alert("You unlocked my heart 💘!");
+        window.location.href = "video.html";
+      } else if (guess > secretCode) {
+        hintElement.textContent = "Hint: It's a bit lower than that! 😅";
+      } else if (guess < secretCode) {
+        hintElement.textContent = "Hint: Go higher, baby! 😇";
+      } else {
+        hintElement.textContent = "Hmm... try again! 😜";
+      }
+    }
+  </script>
+</body>
+</html>
