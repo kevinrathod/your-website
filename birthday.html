@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Happy Birthday</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(to top left, #ff9a9e, #fad0c4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Segoe UI', sans-serif;
+      overflow: hidden;
+      color: white;
+      position: relative;
+      flex-direction: column;
+      padding: 20px;
+      text-align: center;
+    }
+
+    body::before {
+      content: "Happy Birthday Love 💖 Happy Birthday Love 💖 ";
+      position: absolute;
+      top: 50%;
+      left: -100%;
+      font-size: 3.5em;
+      font-weight: bold;
+      white-space: nowrap;
+      color: rgba(255, 255, 255, 0.08);
+      transform: translateY(-50%);
+      animation: scroll 30s linear infinite;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    @keyframes scroll {
+      0% { left: -100%; }
+      100% { left: 100%; }
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.2);
+      padding: 30px;
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      z-index: 1;
+      width: 100%;
+      max-width: 350px;
+    }
+
+    .slideshow {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      border: 4px solid white;
+      overflow: hidden;
+      margin: 0 auto 20px;
+      animation: bounce 2s infinite;
+    }
+
+    .slideshow img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    h1 {
+      font-size: 24px;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    #typing {
+      margin-top: 15px;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #fff; }
+      to   { text-shadow: 0 0 20px #fff, 0 0 30px #ff4b2b; }
+    }
+
+    button {
+      margin-top: 25px;
+      padding: 12px 24px;
+      font-size: 16px;
+      border: none;
+      border-radius: 10px;
+      background-color: white;
+      color: #ff4b2b;
+      cursor: pointer;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="slideshow">
+      <img id="photo" src="https://i.ibb.co/sWxf5Vn/girlfriend.jpg" alt="Photo">
+    </div>
+    <h1>Happy Birthday My Love ❤</h1>
+    <p id="typing"></p>
+    <button onclick="window.location.href='task2.html'">🎁 Open Your Gift</button>
+  </div>
+
+  <script>
+    const photos = [
+      "https://i.ibb.co/sWxf5Vn/girlfriend.jpg",
+      "https://i.ibb.co/ZYW3VTp/birthday.jpg"
+    ];
+    let photoIndex = 0;
+    const imgElement = document.getElementById("photo");
+    setInterval(() => {
+      photoIndex = (photoIndex + 1) % photos.length;
+      imgElement.src = photos[photoIndex];
+    }, 3000);
+
+    const message = "Every moment with you is a beautiful memory. I’m so lucky to call you mine. Happy Birthday baby ❤";
+    let i = 0;
+    function typeWriter() {
+      if (i < message.length) {
+        document.getElementById("typing").innerHTML += message.charAt(i);
+        i++;
+        setTimeout(typeWriter, 50);
+      }
+    }
+    typeWriter();
+  </script>
+</body>
+</html>
