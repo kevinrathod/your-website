@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Find the Real Heart</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      margin: 0;
+      background: linear-gradient(to top left, #ffdde1, #ee9ca7);
+      height: 100vh;
+      overflow: hidden;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      color: white;
+      position: relative;
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 10px;
+    }
+
+    .heart {
+      font-size: 40px;
+      position: absolute;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+  </style>
+</head>
+<body>
+  <h2>One of these hearts is real 💘</h2>
+  <p>Click the right one to move forward!</p>
+
+  <script>
+    const totalHearts = 5;
+    const realIndex = Math.floor(Math.random() * totalHearts);
+
+    for (let i = 0; i < totalHearts; i++) {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.innerText = '❤️';
+      document.body.appendChild(heart);
+
+      // Place randomly
+      function move() {
+        const x = Math.random() * (window.innerWidth - 50);
+        const y = Math.random() * (window.innerHeight - 50);
+        heart.style.left = x + 'px';
+        heart.style.top = y + 'px';
+      }
+
+      setInterval(move, 1000);
+      move();
+
+      // Click handler
+      if (i === realIndex) {
+        heart.onclick = () => {
+          alert("You found the real heart 💘!");
+          window.location.href = "birthday.html";
+        };
+      } else {
+        heart.onclick = () => {
+          alert("Oops! That’s a fake heart 💔");
+        };
+      }
+    }
+  </script>
+</body>
+</html>
